@@ -8,7 +8,11 @@ import {
   type CrossEventCorrelation,
 } from './cross-event-correlation.js';
 import { SPCXX_MOE_POOL } from './constants.js';
-import { getCalendarEvent } from './macro-event-calendar.js';
+import {
+  getEventDefinition,
+  registerDynamicDefinitions,
+} from './event-definition-store.js';
+import type { MacroCalendarEventDefinition } from './macro-event-calendar.js';
 import { resolveCalendarEvent } from './macro-events.js';
 import { runPreflight } from './preflight.js';
 import type { MacroEventDetectionResult } from './types.js';
@@ -37,6 +41,8 @@ export interface AcquisitionRunResult {
 
 export interface AcquisitionRunOptions {
   eventIds: string[];
+  /** Optional resolved definitions (e.g. from POST /macro-events/resolve) — survives server restart. */
+  definitions?: MacroCalendarEventDefinition[];
   network?: MantleNetwork;
   fredApiKey?: string;
 }
@@ -203,11 +209,21 @@ export async function runAcquisitionTrace(
 
   pushLog(logs, 'info', `> acquisition engine — ${eventIds.length} event(s)`, 'thinker');
 
+  if (options.definitions?.length) {
+    registerDynamicDefinitions(options.definitions);
+    pushLog(
+      logs,
+      'info',
+      `registered ${options.definitions.length} dynamic definition(s) from request`,
+      'thinker',
+    );
+  }
+
   const macros: MacroEventDetectionResult[] = [];
   let failed = 0;
 
   for (const eventId of eventIds) {
-    const definition = getCalendarEvent(eventId);
+    const definition = getEventDefinition(eventId);
     if (!definition) {
       failed += 1;
       pushLog(logs, 'warn', `Unknown event_id: ${eventId}`, 'thinker');

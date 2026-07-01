@@ -1,5 +1,6 @@
 import type { MacroCalendarEventDefinition } from './macro-event-calendar.js';
-import { getCalendarEvent, MACRO_EVENT_CALENDAR } from './macro-event-calendar.js';
+import { MACRO_EVENT_CALENDAR } from './macro-event-calendar.js';
+import { getEventDefinition } from './event-definition-store.js';
 import { computeSurpriseForEvent } from './macro-surprise.js';
 import type { MacroEventDetectionResult, TimeWindow } from './types.js';
 import { fetchFredObservations, parseFredNumber } from './fred-client.js';
@@ -131,7 +132,7 @@ export async function detectMacroEventWindow(
   options: MacroEventOptions = {},
 ): Promise<MacroEventDetectionResult> {
   const eventId = options.eventId ?? 'spacex-ipo-q1';
-  const calendarDef = getCalendarEvent(eventId);
+  const calendarDef = getEventDefinition(eventId);
 
   if (calendarDef) {
     return resolveCalendarEvent(calendarDef, options.apiKey);

@@ -5,25 +5,68 @@ import { generateReportsFromSnapshotCalendar } from './agent/batch-report-genera
 import { runCorrelationPipeline, runCorrelationPipelineFromSnapshot } from './agent/correlationEngine.js';
 import { MOCK_SPACEX_EVENT } from './agent/mock-data.js';
 import type { MacroEvent } from './agent/types.js';
+import { listCalendarEventIds } from './data/macro-event-calendar.js';
 
-function parseEventFromArgs(): MacroEvent {
-  const eventIdIdx = process.argv.indexOf('--event');
-  if (eventIdIdx !== -1 && process.argv[eventIdIdx + 1]) {
-    const eventId = process.argv[eventIdIdx + 1];
-    if (eventId === MOCK_SPACEX_EVENT.eventId) return MOCK_SPACEX_EVENT;
-    throw new Error(`Unknown event id: ${eventId}. Available: ${MOCK_SPACEX_EVENT.eventId}`);
+function parseFlagValue(flag: string): string | undefined {
+  const withEquals = process.argv.find((arg) => arg.startsWith(`${flag}=`));
+  if (withEquals) return withEquals.slice(flag.length + 1);
+
+  const idx = process.argv.indexOf(flag);
+  if (idx !== -1 && process.argv[idx + 1] && !process.argv[idx + 1].startsWith('--')) {
+    return process.argv[idx + 1];
   }
-
-  return MOCK_SPACEX_EVENT;
+  return undefined;
 }
 
-function parseBatchEventIds(): string[] | null {
-  const eventsIdx = process.argv.indexOf('--events');
-  if (eventsIdx === -1 || !process.argv[eventsIdx + 1]) return null;
-  return process.argv[eventsIdx + 1]
-    .split(',')
-    .map((value) => value.trim())
+/** --events id1,id2 | --events=id | --event id | positional event_id */
+function parseEventIdsFromArgs(): string[] | null {
+  const eventsRaw = parseFlagValue('--events');
+  if (eventsRaw) {
+    return eventsRaw
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean);
+  }
+
+  const eventRaw = parseFlagValue('--event');
+  if (eventRaw) return [eventRaw];
+
+  const positionals = process.argv
+    .slice(2)
+    .filter((arg) => !arg.startsWith('--'))
+    .flatMap((arg) => arg.split(',').map((value) => value.trim()))
     .filter(Boolean);
+
+  return positionals.length > 0 ? positionals : null;
+}
+
+function parseMockEvent(eventIds: string[] | null): MacroEvent {
+  const calendarIds = new Set(listCalendarEventIds());
+
+  if (!eventIds || eventIds.length === 0) {
+    return MOCK_SPACEX_EVENT;
+  }
+
+  if (eventIds.length > 1) {
+    throw new Error(
+      `Mock mode supports one --event only. For multiple calendar events use:\n` +
+        `  npx tsx src/generate-report.ts --from-snapshot --events=${eventIds.join(',')}`,
+    );
+  }
+
+  const eventId = eventIds[0]!;
+  if (eventId === MOCK_SPACEX_EVENT.eventId) return MOCK_SPACEX_EVENT;
+
+  if (calendarIds.has(eventId)) {
+    throw new Error(
+      `Calendar event "${eventId}" requires snapshot mode:\n` +
+        `  npx tsx src/generate-report.ts --from-snapshot --events=${eventId}`,
+    );
+  }
+
+  throw new Error(
+    `Unknown event id: ${eventId}. Calendar events: ${listCalendarEventIds().join(', ')}`,
+  );
 }
 
 function resolveMode(): 'mock' | 'snapshot' | 'live-rpc' {
@@ -67,7 +110,7 @@ async function main(): Promise<void> {
       ? process.argv[snapshotPathIdx + 1]
       : undefined;
 
-  const batchEventIds = parseBatchEventIds();
+  const batchEventIds = parseEventIdsFromArgs();
   const batchAll = process.argv.includes('--all');
 
   console.log('Parallax Module 3 — Correlation & Reporting Engine');
@@ -129,7 +172,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const event = parseEventFromArgs();
+  const event = parseMockEvent(batchEventIds);
   const useMock = mode === 'mock';
 
   console.log(`Event: ${event.eventName} (${event.eventId})`);

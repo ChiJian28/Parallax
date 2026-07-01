@@ -1,11 +1,13 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { storeAcquisitionSession } from '../../agent/acquisition-session-cache.js';
 import { runAcquisitionTrace } from '../../data/acquisition-runner.js';
+import type { MacroCalendarEventDefinition } from '../../data/macro-event-calendar.js';
 import type { X402ServerConfig } from '../config.js';
 import { readJsonBody, sendJson } from '../http-utils.js';
 
 interface AcquisitionRunRequest {
   event_ids?: string[];
+  definitions?: MacroCalendarEventDefinition[];
 }
 
 export async function handleRunAcquisition(
@@ -34,8 +36,18 @@ export async function handleRunAcquisition(
   }
 
   try {
+    const definitions = Array.isArray(body.definitions)
+      ? body.definitions.filter(
+          (value): value is MacroCalendarEventDefinition =>
+            typeof value === 'object' &&
+            value != null &&
+            typeof (value as MacroCalendarEventDefinition).event_id === 'string',
+        )
+      : undefined;
+
     const result = await runAcquisitionTrace({
       eventIds,
+      definitions,
       fredApiKey: process.env.FRED_API_KEY,
     });
 

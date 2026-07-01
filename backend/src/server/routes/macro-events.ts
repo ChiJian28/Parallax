@@ -1,5 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { MACRO_EVENT_CALENDAR } from '../../data/macro-event-calendar.js';
+import { listDynamicEventDefinitions } from '../../data/event-definition-store.js';
 import {
   isBatchMacroEventRequest,
   listRegistryEventsForApi,
@@ -36,8 +37,19 @@ function batchStatusCode(result: { success: boolean; total_failed: number }): nu
 }
 
 export function handleListMacroEvents(_config: X402ServerConfig, res: ServerResponse): void {
+  const registry = listRegistryEventsForApi();
+  const discovered = listDynamicEventDefinitions().map((event) => ({
+    event_id: event.event_id,
+    name: event.name,
+    type: event.type,
+    trigger_time_utc: new Date(event.timestamp_unix * 1000).toISOString(),
+    tokens: event.tokens,
+    aliases: [] as string[],
+    source: 'discovered' as const,
+  }));
+
   sendJson(res, 200, {
-    events: listRegistryEventsForApi(),
+    events: [...registry, ...discovered],
     supported_types: ['CPI', 'FED_RATE', 'IPO'],
     multi_select: {
       enabled: true,

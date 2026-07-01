@@ -1,4 +1,5 @@
 import { callGeminiJson } from '../lib/gemini-client.js';
+import { registerDynamicDefinition } from './event-definition-store.js';
 import {
   getCalendarEvent,
   MACRO_EVENT_CALENDAR,
@@ -524,6 +525,8 @@ export async function resolveMacroEventFromPrompt(
       { discovered_params: discovered },
     );
   }
+
+  registerDynamicDefinition(definition);
 
   const event = await resolveCalendarEvent(definition, options.fredApiKey);
   return {
