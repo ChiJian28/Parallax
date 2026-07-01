@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+registration.json
+data-snapshot.json
+reports/
+scripts/
+.env.example

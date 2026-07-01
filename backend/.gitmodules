@@ -1,0 +1,3 @@
+[submodule "skills/mantle-skills"]
+	path = skills/mantle-skills
+	url = https://github.com/mantle-xyz/mantle-skills.git
