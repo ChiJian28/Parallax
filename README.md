@@ -98,7 +98,7 @@ Parallax isn't just a dashboard; it's a self-sustaining ecosystem powered by Man
 
 ### Technical Architecture
 
-Parallax Architecture
+![Architecture](./architecture.svg)
 
 ### Follow the data
 
