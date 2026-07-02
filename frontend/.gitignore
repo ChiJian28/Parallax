@@ -1,0 +1,48 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js
+.next/
+out/
+
+# production / tooling
+build/
+dist/
+.turbo/
+.vercel/
+
+# environment (keep .env.example)
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.example
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# testing
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# certs / keys (WalletConnect, etc.)
+*.pem

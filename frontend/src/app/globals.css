@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Parallax bright mode (default) */
+    --parallax-bg: #faf9f6;
+    --parallax-fg: #1c1917;
+    --parallax-fg-muted: #6b7280;
+    --parallax-accent: #d95b43;
+    --parallax-accent-alt: #c44f39;
+    --parallax-accent-blue: #2563eb;
+    --parallax-panel: #ffffff;
+    --parallax-border: #e5e7eb;
+    --parallax-glass-bg: rgba(255, 255, 255, 0.72);
+    --parallax-border-glass: rgba(229, 231, 235, 0.9);
+    --parallax-border-subtle: #e5e7eb;
+    --parallax-terminal-bg: #f4ece1;
+    --parallax-terminal-fg: #4a3f35;
+    --parallax-terminal-prompt: #d95b43;
+    --parallax-terminal-rpc: #2563eb;
+    --parallax-terminal-ok: #5f7161;
+    --parallax-terminal-warn: #b45309;
+    --parallax-terminal-muted: #8c7b6a;
+    --parallax-terminal-border: #e6d8c3;
+
+    --background: 40 20% 98%;
+    --foreground: 24 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 10%;
+    --primary: 11 65% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 24 10% 10%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 221 83% 53%;
+    --accent-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 11 65% 55%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --parallax-bg: #0b0c10;
+    --parallax-fg: #e8eaed;
+    --parallax-fg-muted: #8b919a;
+    --parallax-accent: #00ffcc;
+    --parallax-accent-alt: #02e2b1;
+    --parallax-accent-blue: #3b82f6;
+    --parallax-panel: rgba(255, 255, 255, 0.03);
+    --parallax-border: rgba(255, 255, 255, 0.08);
+    --parallax-glass-bg: rgba(255, 255, 255, 0.03);
+    --parallax-border-glass: rgba(255, 255, 255, 0.08);
+    --parallax-border-subtle: rgba(148, 163, 184, 0.18);
+    --parallax-terminal-bg: #282c34;
+    --parallax-terminal-fg: #e5e7eb;
+    --parallax-terminal-prompt: #a7f3d0;
+    --parallax-terminal-rpc: #93c5fd;
+    --parallax-terminal-ok: #6ee7b7;
+    --parallax-terminal-warn: #fcd34d;
+    --parallax-terminal-muted: #9ca3af;
+    --foreground: 210 11% 93%;
+    --card: 228 12% 8%;
+    --card-foreground: 210 11% 93%;
+    --primary: 168 100% 50%;
+    --primary-foreground: 228 14% 5%;
+    --secondary: 228 10% 12%;
+    --secondary-foreground: 210 11% 93%;
+    --muted: 228 10% 12%;
+    --muted-foreground: 215 9% 58%;
+    --accent: 168 98% 45%;
+    --accent-foreground: 228 14% 5%;
+    --border: 215 16% 22%;
+    --input: 215 16% 22%;
+    --ring: 168 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen bg-parallax-bg text-parallax-fg antialiased;
+    background-color: var(--parallax-bg);
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--parallax-glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--parallax-border-glass);
+  }
+
+  .hud-panel {
+    @apply flex flex-col overflow-hidden rounded-lg border border-parallax-border bg-white shadow-sm;
+    background-color: var(--parallax-panel);
+  }
+
+  .dark .hud-panel {
+    @apply glass;
+  }
+
+  .layout-shell {
+    @apply flex min-h-screen flex-col;
+  }
+
+  .layout-header {
+    @apply glass sticky top-0 z-50 border-b border-parallax-border-glass;
+  }
+
+  .layout-header-inner {
+    @apply mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6;
+  }
+
+  .layout-nav {
+    @apply glass border-b border-parallax-border-glass;
+  }
+
+  .layout-nav-inner {
+    @apply mx-auto flex w-full max-w-7xl items-center gap-1 px-4 sm:px-6;
+  }
+
+  .layout-main {
+    @apply mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6;
+  }
+
+  .execution-trace-canvas {
+    @apply h-full w-full;
+    min-height: calc(100dvh - 7.25rem);
+  }
+
+  .orbital-sun {
+    animation: orbital-sun-pulse 3.5s ease-in-out infinite;
+    transform-origin: center center;
+  }
+
+  .orbital-tilt-plane {
+    transform-style: preserve-3d;
+  }
+
+  .planet-stand {
+    transform-style: preserve-3d;
+  }
+}
+
+@layer utilities {
+  @keyframes orbital-sun-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow:
+        0 0 32px rgba(255, 220, 120, 0.9),
+        0 0 64px rgba(255, 180, 60, 0.55),
+        0 0 100px rgba(255, 140, 40, 0.3);
+    }
+    50% {
+      transform: scale(1.08);
+      box-shadow:
+        0 0 40px rgba(255, 230, 140, 1),
+        0 0 72px rgba(255, 190, 70, 0.7),
+        0 0 110px rgba(255, 150, 50, 0.4);
+    }
+  }
+
+  .text-accent-mint {
+    color: var(--parallax-accent);
+  }
+
+  .border-glass {
+    border-color: var(--parallax-border-glass);
+  }
+
+  .bg-glass {
+    background: var(--parallax-glass-bg);
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Warm Sepia Paper terminal — old Wall Street ledger */
+  .terminal-sepia {
+    background-color: #fcf7f1;
+    border: 1px solid #e6d8c3;
+    box-shadow: inset 0 1px 3px rgba(74, 63, 53, 0.08);
+  }
+
+  .terminal-sepia-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .terminal-sepia-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
