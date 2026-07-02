@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist_Mono, Inter, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import '@rainbow-me/rainbowkit/styles.css';
 import './globals.css';
 import { Providers } from '@/components/providers';
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <AppShell>{children}</AppShell>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
