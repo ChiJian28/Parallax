@@ -38,7 +38,11 @@ export function ReputationFeedback({
     setLoading(true);
     setError(null);
     try {
-      const hash = await submitOnChainFeedback(walletClient, { value: score[0], eventId });
+      const hash = await submitOnChainFeedback(walletClient, {
+        value: score[0],
+        eventId,
+        text: `Prediction accuracy ${score[0]}/100 for ${eventId}`,
+      });
       setTxHash(hash);
       onSubmitted();
     } catch (err) {
