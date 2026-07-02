@@ -4,6 +4,5 @@ dist/
 registration.json
 data-snapshot.json
 discovered-events.json
-reports/
 scripts/
 .env.example

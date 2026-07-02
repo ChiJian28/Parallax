@@ -1,0 +1,80 @@
+{
+  "eventId": "cpi-jun-2026",
+  "eventName": "CPI_JUN_2026",
+  "timestamp": 1782533062336,
+  "teaser": "The CPI_JUN_2026 event, marked by a significant 1.0002 surprise magnitude, precipitated a notable -8.566% price depreciation for SPCXx on Merchant Moe. Concurrently, Aave V3 on Mantle exhibited a neutral capital flow direction, with an average stablecoin utilization rate delta of +0.8933% and a net supply reduction, indicating cautious repositioning in response to macroeconomic uncertainty within Mantle's CeDeFi layer.",
+  "fullContent": "## Executive Summary\nThis report analyzes the onchain impact of the CPI_JUN_2026 macroeconomic trigger event on Mantle's CeDeFi distribution layer. The event, characterized by a **1.0002 surprise magnitude** (indicating higher-than-expected inflation), elicited distinct reactions across both tokenized Real World Assets (RWAs) and stablecoin liquidity protocols. Specifically, SPCXx, a proxy for SpaceX equity traded on Merchant Moe's DLMM, experienced a significant **-8.566% price depreciation** accompanied by a **proxied 6.001x volume spike**. Concurrently, Aave V3 on Mantle saw its average stablecoin utilization rate increase by **+0.8933%**, with average borrow APYs rising by **+0.0399%**, and a net reduction of **-$19,332.33** in total supplied stablecoin capital. Despite these shifts, the overall **capital flow direction was determined to be neutral**, reflecting a nuanced rebalancing rather than a definitive risk-on or risk-off sentiment. These findings underscore Mantle's role as a responsive ecosystem for RWA distribution and capital efficiency in the face of macro shocks, albeit with acknowledged data limitations regarding proxied volume metrics.\n\n## Macro Context: CPI_JUN_2026 Surprise Analysis\nThe primary macroeconomic trigger for this analysis was the CPI_JUN_2026 event, specifically referencing the FRED CPIAUCSL series for May 2026. The reported **surprise magnitude of 1.0002** indicates that the Consumer Price Index (CPI) reading significantly exceeded market expectations. This positive surprise suggests an unexpectedly robust inflationary environment, which typically leads to market anticipation of more hawkish monetary policy actions from central banks. Such expectations often translate into increased discount rates for future cash flows, negatively impacting the valuation of growth-oriented assets and fostering a general increase in market uncertainty or risk aversion.\n\nThe event unfolded with a trigger time of **2026-06-18T11:10:00Z**. Our analysis considered a pre-event window of 24 hours (2026-06-17T11:10:00Z to 2026-06-18T11:10:00Z) and a post-event window of 6 hours (2026-06-18T11:10:00Z to 2026-06-18T17:10:00Z). This framework allows for a direct observation of market reactions immediately following the public release of the surprise CPI data. The unexpected inflationary pressure set a critical backdrop against which onchain capital positioning and asset re-pricing dynamics on Mantle are evaluated.\n\n## The SpaceX / SPCXx Narrative on Mantle\nSPCXx represents a tokenized equity derivative of SpaceX, functioning as a synthetic Real World Asset (RWA) within the Mantle ecosystem. This asset class embodies Mantle's strategic objective to serve as a premier distribution layer for tokenized RWAs, bridging traditional financial market exposure with the efficiency and transparency of decentralized finance. By offering access to assets like SPCXx, Mantle enables a diverse range of market participants to gain exposure to leading global companies in a fractionalized and permissionless manner.\n\nThe trading of SPCXx occurs on **Merchant Moe's Concentrated Liquidity Market Maker (DLMM)**. Merchant Moe, by implementing a DLMM model, facilitates highly efficient and deep liquidity within specific price ranges. This design is crucial for RWA proxies such as SPCXx, as it allows for precise price discovery and reduces slippage, even for assets that may experience significant volatility in response to macro events. The integration of such sophisticated liquidity mechanisms within Mantle reinforces its narrative as a robust and capital-efficient platform. The observed reactions of SPCXx directly following the CPI surprise highlight how Mantle's infrastructure enables direct and immediate onchain responses to global macroeconomic shifts, demonstrating its capability to serve as a vital conduit for capital flows between traditional finance and the decentralized digital economy.\n\n## Merchant Moe Liquidity Analysis: SPCXx Reaction\nFollowing the CPI_JUN_2026 macro surprise, the SPCXx token, trading on Merchant Moe's DLMM, exhibited a swift and notable market reaction within the 6-hour post-event window. The key observations are as follows:\n\n**Price Change:** SPCXx experienced a significant **-8.566% price depreciation**. This sharp decline directly correlates with the positive CPI surprise magnitude (1.0002). The market interpreted higher-than-expected inflation as a negative catalyst for risk assets, leading to a rapid re-pricing of SPCXx. This immediate negative response underscores the sensitivity of tokenized RWAs on Mantle to traditional macroeconomic data and market participants' propensity to adjust their valuations accordingly, likely due to increased expectations for interest rate hikes or a general flight from growth-oriented equities.\n\n**Volume Spike:** The analysis indicated a `volume_spike_ratio` of **6.001**. This suggests a substantial increase in trading activity in the post-event window, with reported post-window volume at 6.001 USD compared to a pre-window volume of 1 USD. However, it is imperative to address a critical data caveat: the **volume spike ratio was proxied as 1 + |macro_surprise|×5 (= 6.001)**. This means the reported volume spike is a deterministic calculation based on the magnitude of the macro surprise, rather than empirical onchain transaction volume collected directly from RPC endpoints. While providing a conceptual indicator of increased market engagement, this proxy limits the ability to definitively quantify actual trading intensity or liquidity provision changes based on real user activity.\n\n**Liquidity Change:** The `liquidity_change_pct` metric was reported as `null`. The absence of this data point means that a direct assessment of how the overall liquidity within the SPCXx/USDC pool on Merchant Moe changed in percentage terms post-event is not possible. Without this, it is challenging to ascertain whether the price movement was exacerbated or mitigated by significant withdrawals or additions of liquidity from Automated Market Maker (AMM) participants.\n\n**Data Caveat Transparency:** It is important to reiterate the data collection methodologies for SPCXx on Merchant Moe. The **",
+  "priceMNT": 2,
+  "computedMetrics": {
+    "macroSurprise": 1.0002,
+    "priceDelta": -8.57,
+    "volumeSpike": 6,
+    "insightXAccuracy": 1,
+    "aaveUtilizationDelta": 0.8933333333333344,
+    "aaveBorrowApyDelta": 0.03999999999999996,
+    "aaveSupplyDeltaUsd": -19332.333333333332,
+    "capitalFlowDirection": "neutral",
+    "liquidityChangePct": null,
+    "pearsonMacroXstocks": null,
+    "pearsonXstocksAave": null
+  },
+  "eventDelta": {
+    "macro_surprise": 1.0002,
+    "event_type": "CPI",
+    "volume_spike_ratio": 6.001,
+    "price_change_pct": -8.566,
+    "price_direction": "down",
+    "liquidity_change_pct": null,
+    "aave_reserves": {
+      "USDC": {
+        "utilization_delta": 0,
+        "borrow_apy_delta": 0,
+        "supply_delta_usd": 101
+      },
+      "USDT0": {
+        "utilization_delta": 1.6200000000000045,
+        "borrow_apy_delta": 0.06999999999999984,
+        "supply_delta_usd": 4722
+      },
+      "USDe": {
+        "utilization_delta": 1.0599999999999987,
+        "borrow_apy_delta": 0.050000000000000044,
+        "supply_delta_usd": -62820
+      }
+    },
+    "aave_avg_utilization_delta": 0.8933333333333344,
+    "aave_avg_borrow_apy_delta": 0.03999999999999996,
+    "aave_avg_supply_delta_usd": -19332.333333333332,
+    "capital_flow_direction": "neutral",
+    "pearson_macro_xstocks": null,
+    "pearson_xstocks_aave": null,
+    "data_quality": {
+      "xstocks_source": "historical_rpc",
+      "aave_source": "historical_rpc",
+      "caveats": [
+        "Price delta from Merchant Moe DLMM active bin ID at historical block heights (eth_call getActiveId).",
+        "Volume spike ratio proxied as 1 + |macro_surprise|×5 (= 6.001)."
+      ]
+    }
+  },
+  "windows": {
+    "trigger_utc": "2026-06-18T11:10:00.000Z",
+    "preWindow": {
+      "start": 1781694600000,
+      "end": 1781781000000,
+      "start_utc": "2026-06-17T11:10:00.000Z",
+      "end_utc": "2026-06-18T11:10:00.000Z"
+    },
+    "postWindow": {
+      "start": 1781781000000,
+      "end": 1781802600000,
+      "start_utc": "2026-06-18T11:10:00.000Z",
+      "end_utc": "2026-06-18T17:10:00.000Z"
+    }
+  },
+  "dataSources": {
+    "baseline": "live",
+    "postEvent": "live",
+    "llm": "gemini"
+  }
+}

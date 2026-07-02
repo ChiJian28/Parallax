@@ -1,0 +1,79 @@
+{
+  "eventId": "fomc-mar-2026",
+  "eventName": "FOMC_MAR_2026",
+  "timestamp": 1782551032529,
+  "teaser": "Following the FOMC March 2026 announcement, which presented no surprise magnitude, onchain capital flows on Mantle's Aave V3 exhibited a nuanced 'neutral' repositioning, characterized by a slight increase in average stablecoin utilization and a notable inflow of USDT0. The SPCXx market on Merchant Moe, however, provided no discernible reaction due to the asset's limited deployment at the event window.",
+  "fullContent": "## Executive Summary\n\nThis report analyzes the onchain reaction across Mantle's CeDeFi distribution layer to the FOMC March 2026 event. The macroeconomic trigger, a FED_RATE announcement, registered a surprise magnitude of 0, indicating alignment with market expectations. Consequently, the observed capital flow direction across Mantle's ecosystem was assessed as 'neutral'. Analysis of xStocks (SPCXx) on Merchant Moe's DLMM pools revealed no quantifiable reaction, attributed to the specific liquidity pool not being actively deployed during the event window. In contrast, Aave V3 stablecoin markets demonstrated a collective average increase in utilization rate by approximately 0.67% and average borrow APY by 0.03%, alongside a net increase of over $2.07 million in total supplied USD. This suggests a subtle rebalancing of stablecoin liquidity and demand within Mantle's lending markets, even in the absence of a significant macro surprise or direct RWA token price movement.\n\n## Macro Context: FOMC March 2026 and Market Expectations\n\nThe FOMC March 2026 meeting concluded with an announcement regarding the Federal Funds Rate, identified by the FRED series ID 'DFF'. This event occurred at 2026-03-19T19:00:00.000Z. A critical aspect of this macroeconomic trigger was its `surprise_magnitude`, which was precisely 0. This outcome signifies that the Federal Reserve's decision perfectly aligned with prevailing market expectations, resulting in what is considered a 'neutral' macro event. In traditional financial markets, a zero surprise magnitude typically leads to minimal immediate volatility, as asset prices have already factored in the anticipated policy. Our analysis aims to discern how this neutrality translates into onchain capital positioning within Mantle's burgeoning CeDeFi ecosystem, particularly across its decentralized exchange and lending protocols.\n\n## Mantle's CeDeFi Distribution Layer: An Overview\n\nMantle Network positions itself as a robust and scalable Layer 2 solution, specifically engineered to foster a highly capital-efficient CeDeFi ecosystem. Its infrastructure is designed to serve as a pivotal distribution layer for both native crypto assets and a new generation of tokenized Real World Assets (RWAs). The integration of platforms like Merchant Moe for advanced liquidity provision and Aave V3 for decentralized lending and borrowing underscores Mantle's commitment to delivering institutional-grade financial primitives onchain. The network's architecture facilitates seamless and cost-effective interactions with these protocols, offering participants enhanced capital efficiency and diverse opportunities for yield generation, hedging, and exposure to various asset classes. Understanding how capital rebalances across these core components during macroeconomic events is vital for assessing Mantle's resilience and utility as a key layer in the evolving financial landscape.\n\n## The SPCXx Market on Merchant Moe DLMM: Data Limitations and Implications\n\nSPCXx, a synthetic representation of traditional equity exposure, trades on Merchant Moe, a leading Decentralized Liquidity Market Maker (DLMM) on Mantle Network. This mechanism allows for precise and capital-efficient liquidity provision. For the FOMC March 2026 event, the analysis of SPCXx market reaction was significantly impacted by specific data limitations. The `collected_data.xstocks.status` was reported as 'partial', accompanied by the critical caveat: \"LB pool not deployed at event window — no historical SPCXx price delta.\" This means that the specific concentrated liquidity pool for SPCXx on Merchant Moe was not actively deployed or sufficiently liquid during the designated pre- and post-event windows (2026-03-19T19:00:00.000Z to 2026-03-20T07:00:00.000Z). Consequently, key metrics such as `volume_spike_ratio`, `price_change_pct`, and `liquidity_change_pct` could not be reliably observed or computed and are reported as `null`. This absence of data prevents a direct assessment of how the SPCXx market, as a proxy for traditional asset exposure, responded to the neutral macroeconomic announcement. While this particular instance limits our ability to draw conclusions on direct RWA token price action, it underscores the dynamic nature of concentrated liquidity pools and their deployment cycles. Future analyses, with actively deployed xStocks pools, will be crucial for understanding the direct correlation between macro triggers and RWA token performance on Mantle's CeDeFi rails.\n\n## Aave V3 Stablecoin Positioning: A Granular Analysis of Onchain Capital\n\nDespite the lack of observable activity in the SPCXx market, Aave V3 on Mantle provided valuable insights into capital positioning in response to the neutral FOMC announcement. Aave V3 serves as a foundational primitive for capital efficiency within Mantle's ecosystem, enabling users to supply and borrow a variety of assets, including critical stablecoins. The collective Aave V3 metrics across all stablecoins reveal a `capital_flow_direction` of 'neutral', consistent with the zero macro surprise. However, a deeper dive into the individual stablecoin metrics highlights nuanced shifts:\n\n*   **Overall Aave V3 Summary:**\n    *   The `aave_avg_utilization_delta` across stablecoins saw an increase of **0.67%**. This slight uptick suggests a marginal increase in borrowing demand relative to supply, or a decrease in supply with stable borrowing. \n    *   Concurrently, the `aave_avg_borrow_apy_delta` increased by **0.03%**, reflecting the increased utilization and potentially a slight shift in equilibrium rates.\n    *   Total stablecoin `aave_avg_supply_delta_usd` recorded a positive change of **$2,072,392.67**, indicating a net inflow of capital into Mantle's Aave V3 stablecoin pools post-event.\n\n*   **Detailed Stablecoin Breakdown:**\n\n    *   **USDC (0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9):**\n        *   `utilization_delta`: **+3.88%** (from 50.44% to 54.32%)\n        *   `borrow_apy_delta`: **+0.17%** (from 2.24% to 2.41%)\n        *   `supply_delta_usd`: **-$123,047** (from $56,935,046 to $56,811,999)\n        \n        For USDC, we observe a notable increase in utilization and borrow APY, coupled with a slight decrease in total supplied USD. This configuration suggests that borrowing demand for USDC increased relative to its available supply within the Aave V3 pool during the post-event window. Users may have been seeking USDC for various onchain activities, potentially to rebalance portfolios or engage in other DeFi strategies, despite the neutral macro backdrop. The reduced supply indicates either withdrawals or a slower rate of new deposits compared to borrowing growth.\n\n    *   **USDT0 (0x779Ded0c9e1022225f8E0630b35a9b54bE713736):**\n        *   `utilization_delta`: **-1.15%** (from 70.96% to 69.81%)\n        *   `borrow_apy_delta`: **-0.05%** (from 3.15% to 3.10%)\n        *   `supply_delta_usd`: **+$6,346,460** (from $567,232,541 to $573,579,001)\n        \n        USDT0 exhibits a contrasting trend. Despite a decrease in its utilization rate and borrow APY, there was a substantial inflow of **$6.35 million** in new supply. This indicates that liquidity providers actively deployed significant capital into the USDT0 pool. The decline in utilization and APY, concurrent with increased supply, suggests that the increased supply outpaced any incremental borrowing demand, leading to a more liquid market with potentially lower borrowing costs for USDT0. This capital inflow into USDT0 was the primary driver of the overall positive `aave_avg_supply_delta_usd` across all stablecoins.\n\n    *   **USDe (0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34):**\n        *   `utilization_delta`: **-0.73%** (from 14.77% to 14.04%)\n        *   `borrow_apy_delta`: **-0.03%** (from 0.69% to 0.66%)\n        *   `supply_delta_usd`: **-$6,235** (from $78,169,185 to $78,162,950)\n        \n        USDe showed minor adjustments, with slight decreases in utilization, borrow APY, and total supplied USD. This asset, typically associated with higher-yield strategies, saw a marginal reduction in activity. The minimal changes suggest a relatively stable state for USDe within Aave V3, with neither significant capital inflows nor outflows, and borrowing demand remaining consistent with its lower utilization profile. This stable behavior aligns with a 'neutral' market reaction, where more volatile or speculative assets might see more pronounced shifts.\n\nIn summary, while the overall `capital_flow_direction` was neutral, the underlying stablecoin dynamics reveal active, albeit rebalancing, capital movements. The notable inflow into USDT0 counterbalanced minor outflows from USDC and USDe, leading to a net positive supply in Aave V3. These adjustments demonstrate the agility of capital positioning on Mantle's CeDeFi layer, even during periods of macroeconomic calm.\n\n## Data Quality and Caveats\n\nThe integrity of this analysis relies heavily on the quality and completeness of the input data. The macroeconomic data, sourced from a calendar event (`FRED_RATE`), is robust and deterministic. For xStocks, the `data_quality.xstocks_source` was a 'live_snapshot', but critically, the `data_caveats` indicate that the \"LB pool not deployed at event window — no historical SPCXx price delta.\" This limitation prevented any meaningful analysis of SPCXx price or volume reaction on Merchant Moe for this specific event. It is essential to acknowledge that future analyses with active xStocks liquidity pools will provide a more comprehensive view of RWA token performance. Aave V3 data was derived from 'historical_rpc' snapshots, ensuring accurate pre- and post-event state comparisons. The granularity of Aave V3 data provides strong signals for stablecoin liquidity shifts, which, in the absence of direct xStocks market data, becomes the primary indicator of onchain capital rebalancing.\n\n## Conclusion & Forward Implications\n\nThe FOMC March 2026 event, characterized by a `surprise_magnitude` of 0, elicited a 'neutral' `capital_flow_direction` across Mantle's CeDeFi ecosystem. While direct observation of SPCXx market reaction on Merchant Moe's DLMM was precluded by liquidity pool deployment status, the Aave V3 lending protocol provided crucial insights. The aggregate increase in average stablecoin utilization and net supply highlights the continuous, albeit subtle, capital rebalancing within Mantle's liquid markets. Specifically, a significant inflow into USDT0 demonstrated a willingness of liquidity providers to deploy capital into a neutral market, offsetting minor shifts in USDC and USDe. These granular movements underscore the sophistication of onchain capital management, even in the absence of pronounced macroeconomic volatility.\n\nThis analysis reinforces Mantle Network's role as an efficient and resilient distribution layer for both crypto-native assets and future tokenized RWAs. The ability of its core CeDeFi primitives, like Aave V3, to absorb and reallocate significant stablecoin liquidity demonstrates the network's foundational strength and capital efficiency. As the ecosystem matures and xStocks gain wider adoption and continuous liquidity, future macro events will offer increasingly rich datasets to observe the correlation between traditional finance and onchain RWA performance. Further research should focus on sustained periods of xStocks liquidity to fully evaluate their reactivity to macro triggers and their role in facilitating capital flows within Mantle's RWA distribution framework.",
+  "priceMNT": 2,
+  "computedMetrics": {
+    "macroSurprise": 0,
+    "priceDelta": 0,
+    "volumeSpike": 1,
+    "insightXAccuracy": 1,
+    "aaveUtilizationDelta": 0.6666666666666702,
+    "aaveBorrowApyDelta": 0.030000000000000065,
+    "aaveSupplyDeltaUsd": 2072392.6666666667,
+    "capitalFlowDirection": "neutral",
+    "liquidityChangePct": null,
+    "pearsonMacroXstocks": null,
+    "pearsonXstocksAave": null
+  },
+  "eventDelta": {
+    "macro_surprise": 0,
+    "event_type": "FED_RATE",
+    "volume_spike_ratio": null,
+    "price_change_pct": null,
+    "price_direction": "flat",
+    "liquidity_change_pct": null,
+    "aave_reserves": {
+      "USDC": {
+        "utilization_delta": 3.8800000000000026,
+        "borrow_apy_delta": 0.16999999999999993,
+        "supply_delta_usd": -123047
+      },
+      "USDT0": {
+        "utilization_delta": -1.1499999999999915,
+        "borrow_apy_delta": -0.04999999999999982,
+        "supply_delta_usd": 6346460
+      },
+      "USDe": {
+        "utilization_delta": -0.7300000000000004,
+        "borrow_apy_delta": -0.029999999999999916,
+        "supply_delta_usd": -6235
+      }
+    },
+    "aave_avg_utilization_delta": 0.6666666666666702,
+    "aave_avg_borrow_apy_delta": 0.030000000000000065,
+    "aave_avg_supply_delta_usd": 2072392.6666666667,
+    "capital_flow_direction": "neutral",
+    "pearson_macro_xstocks": null,
+    "pearson_xstocks_aave": null,
+    "data_quality": {
+      "xstocks_source": "live_snapshot",
+      "aave_source": "historical_rpc",
+      "caveats": [
+        "LB pool not deployed at event window — no historical SPCXx price delta."
+      ]
+    }
+  },
+  "windows": {
+    "trigger_utc": "2026-03-19T19:00:00.000Z",
+    "preWindow": {
+      "start": 1773774000000,
+      "end": 1773946800000,
+      "start_utc": "2026-03-17T19:00:00.000Z",
+      "end_utc": "2026-03-19T19:00:00.000Z"
+    },
+    "postWindow": {
+      "start": 1773946800000,
+      "end": 1773990000000,
+      "start_utc": "2026-03-19T19:00:00.000Z",
+      "end_utc": "2026-03-20T07:00:00.000Z"
+    }
+  },
+  "dataSources": {
+    "baseline": "live",
+    "postEvent": "live",
+    "llm": "gemini"
+  }
+}

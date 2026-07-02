@@ -1,0 +1,79 @@
+{
+  "eventId": "cpi-feb-2026",
+  "eventName": "CPI_FEB_2026",
+  "timestamp": 1782544356942,
+  "teaser": "The CPI_FEB_2026 event registered a -0.1463 surprise, indicating a lower-than-expected inflation figure. While direct xStocks market reaction for SPCXx was unobservable due to pool deployment status, Aave V3 on Mantle showed a notable average stablecoin utilization rate increase of 33.49% and an average borrow APY delta of 1.96% across USDC, USDT0, and USDe, reflecting heightened demand for stablecoin borrowing in the immediate post-event window, yet overall capital flow was neutral.",
+  "fullContent": "## Parallax Onchain Macro Research: CPI_FEB_2026 Event Analysis on Mantle's CeDeFi Layer\n\n### Executive Summary\nThis report analyzes the onchain reaction across Mantle's CeDeFi distribution layer to the CPI_FEB_2026 macroeconomic data release. The Consumer Price Index (CPI) report, dated 2026-02-01, presented a surprise magnitude of -0.1463, indicating a lower-than-anticipated inflation figure. This dovish surprise, typically a catalyst for increased risk appetite in traditional markets, triggered distinct responses within Mantle's onchain ecosystem. While direct observable price and liquidity shifts for the xStock SPCXx on Merchant Moe's Concentrated Liquidity Market Maker (CLMM) pool were not available due to the pool not being deployed at the event window, Aave V3 stablecoin markets exhibited significant activity. Post-event, the average utilization rate across major stablecoins (USDC, USDT0, USDe) on Aave V3 surged by an average of 33.49%, accompanied by an average increase in borrow APY of 1.96%. This suggests a substantial increase in demand for stablecoin borrowing, potentially for leveraging other onchain positions or seeking liquidity. Despite this internal rebalancing within Aave V3, the broader capital flow direction for the ecosystem was assessed as neutral, primarily influenced by the absence of a direct xStocks market signal.\n\n### Macro Context: CPI and its Market Implications\nThe CPI_FEB_2026 event, occurring on 2026-02-12T13:30:00.000Z, delivered a macroeconomic surprise with a magnitude of -0.1463, based on the FRED CPIAUCSL series. This negative surprise signifies that the reported inflation rate (2.434%) was notably lower than the market's previous expectations (implied from the previous value of 2.5803%). In traditional financial markets, a lower-than-expected CPI reading is often interpreted as a dovish signal for monetary policy, potentially reducing the likelihood of interest rate hikes or even increasing the probability of future rate cuts. Such an environment typically fosters a 'risk-on' sentiment, encouraging capital reallocation from safer assets towards higher-yielding or growth-oriented investments. Investors may seek to capitalize on potential equity market rallies or increased liquidity, translating into various onchain strategies within the decentralized finance (DeFi) ecosystem, such as increased leverage or directional bets. Mantle, as a high-performance distribution layer, is designed to efficiently facilitate these capital movements, particularly for tokenized real-world assets (RWAs) and their derivatives.\n\n### The SpaceX / SPCXx Narrative on Mantle\nMantle's strategic positioning as a CeDeFi distribution layer is significantly enhanced by its support for xStocks, tokenized representations of traditional equities. SPCXx, as the target token for this analysis, provides onchain exposure to SpaceX, a prominent and often volatile entity in the aerospace and defense sectors. The integration of such assets on Mantle enables participants to react to macroeconomic events and corporate news directly within the DeFi ecosystem. These xStocks are designed to trade on sophisticated decentralized exchanges like Merchant Moe, utilizing advanced AMM designs such as Concentrated Liquidity Market Makers (CLMMs) to provide efficient liquidity and tight spreads. The theoretical expectation is that a significant macro event like a CPI surprise would lead to observable price and volume reactions in relevant xStocks, reflecting shifts in market sentiment and speculative positioning. This mechanism aims to bridge traditional finance narratives with the liquidity and composability of DeFi, reinforcing Mantle's role in delivering capital efficiency for a diverse range of assets.\n\n### Merchant Moe Liquidity Analysis: SPCXx Onchain Reaction\nThe analysis of SPCXx's reaction on Merchant Moe's liquidity pools post-CPI_FEB_2026 reveals a critical data limitation. According to the `collected_data.xstocks` and `event_delta.data_quality` sections, the SPCXx Liquidity Book (LB) pool on Merchant Moe was not deployed during the specified event window (2026-02-12T13:30:00Z to 2026-02-12T19:30:00Z). Consequently, no historical price delta, volume spike ratio, or liquidity change percentage data could be collected for SPCXx. The reported `pre_window_volume_usd` and `post_window_volume_usd` were both 0. This absence of an active market for SPCXx during the observation period prevents a direct assessment of how the macroeconomic surprise impacted this specific tokenized asset. While Mantle provides the infrastructure for such an interaction, the lack of market deployment in this instance precluded the measurement of Leg 2 of our multi-leg correlation analysis. It is imperative for market participants and researchers to acknowledge such operational prerequisites for comprehensive onchain market analysis, underscoring the dynamic nature of nascent CeDeFi markets for tokenized RWAs.\n\n### Aave V3 Stablecoin Positioning: A Window into Mantle's Capital Flows\nIn contrast to the unobservable xStocks market, Aave V3 on Mantle exhibited discernible shifts in stablecoin positioning, serving as a key indicator for capital flow dynamics within the ecosystem. The overall average utilization rate across USDC, USDT0, and USDe increased by a substantial 33.49% following the CPI report. This was paralleled by an average rise in borrow APY of 1.96% and an average increase in total supplied USD of $202.67.\n\nDelving into specific stablecoin performance:\n*   **USDC**: The utilization rate for USDC saw a dramatic increase of 50%. This surge is particularly notable given that the pre-event utilization rate was 0%, signifying a significant activation of borrowing demand post-event. Concurrently, the borrow APY for USDC rose by 2.77%, and the total supplied USD increased by $117. This indicates that liquidity providers supplied more USDC, and borrowers rapidly absorbed this liquidity, driving up its utilization and borrowing costs. This could be indicative of new capital entering the USDC market or existing capital being reallocated to capitalize on potential opportunities or hedge risks.\n*   **USDT0**: USDT0 experienced a more modest but still positive utilization rate increase of 2.34%. Its borrow APY also saw a slight uptick of 0.13%. However, USDT0 recorded the highest increase in total supplied USD, at $478. This suggests a general inflow of USDT0 liquidity post-event, with a relatively smaller portion of it being immediately borrowed, leading to a less pronounced change in utilization compared to USDC.\n*   **USDe**: USDe demonstrated a significant utilization rate increase of 48.14%, coupled with a borrow APY rise of 2.97%, from a pre-event utilization rate of 0%. The total supplied USD for USDe increased by $13. Similar to USDC, the substantial leap from zero utilization highlights a sudden, concentrated demand for borrowing USDe, likely driven by specific arbitrage opportunities, leverage strategies, or ecosystem-specific incentives tied to this particular stablecoin.\n\nCollectively, these Aave V3 metrics paint a picture of increased stablecoin velocity and demand for borrowing immediately following the dovish CPI surprise. The significant increases in utilization rates for USDC and USDe, alongside rising borrow APYs, suggest that market participants were actively seeking stablecoin liquidity. This heightened activity could be attributed to various onchain strategies: borrowing stablecoins to purchase other assets (e.g., in anticipation of a broader market rally), deploying capital into other DeFi protocols, or initiating complex hedging strategies. Despite these pronounced internal shifts within Aave V3's stablecoin markets, the `event_delta.capital_flow_direction` was determined to be ",
+  "priceMNT": 2,
+  "computedMetrics": {
+    "macroSurprise": -0.1463,
+    "priceDelta": 0,
+    "volumeSpike": 1,
+    "insightXAccuracy": 1,
+    "aaveUtilizationDelta": 33.49333333333333,
+    "aaveBorrowApyDelta": 1.9566666666666668,
+    "aaveSupplyDeltaUsd": 202.66666666666666,
+    "capitalFlowDirection": "neutral",
+    "liquidityChangePct": null,
+    "pearsonMacroXstocks": null,
+    "pearsonXstocksAave": null
+  },
+  "eventDelta": {
+    "macro_surprise": -0.1463,
+    "event_type": "CPI",
+    "volume_spike_ratio": null,
+    "price_change_pct": null,
+    "price_direction": "flat",
+    "liquidity_change_pct": null,
+    "aave_reserves": {
+      "USDC": {
+        "utilization_delta": 50,
+        "borrow_apy_delta": 2.77,
+        "supply_delta_usd": 117
+      },
+      "USDT0": {
+        "utilization_delta": 2.3400000000000034,
+        "borrow_apy_delta": 0.1299999999999999,
+        "supply_delta_usd": 478
+      },
+      "USDe": {
+        "utilization_delta": 48.14,
+        "borrow_apy_delta": 2.97,
+        "supply_delta_usd": 13
+      }
+    },
+    "aave_avg_utilization_delta": 33.49333333333333,
+    "aave_avg_borrow_apy_delta": 1.9566666666666668,
+    "aave_avg_supply_delta_usd": 202.66666666666666,
+    "capital_flow_direction": "neutral",
+    "pearson_macro_xstocks": null,
+    "pearson_xstocks_aave": null,
+    "data_quality": {
+      "xstocks_source": "live_snapshot",
+      "aave_source": "historical_rpc",
+      "caveats": [
+        "LB pool not deployed at event window — no historical SPCXx price delta."
+      ]
+    }
+  },
+  "windows": {
+    "trigger_utc": "2026-02-12T13:30:00.000Z",
+    "preWindow": {
+      "start": 1770816600000,
+      "end": 1770903000000,
+      "start_utc": "2026-02-11T13:30:00.000Z",
+      "end_utc": "2026-02-12T13:30:00.000Z"
+    },
+    "postWindow": {
+      "start": 1770903000000,
+      "end": 1770924600000,
+      "start_utc": "2026-02-12T13:30:00.000Z",
+      "end_utc": "2026-02-12T19:30:00.000Z"
+    }
+  },
+  "dataSources": {
+    "baseline": "live",
+    "postEvent": "live",
+    "llm": "gemini"
+  }
+}
