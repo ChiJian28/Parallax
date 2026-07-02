@@ -4,7 +4,6 @@
 
 *An ERC-8004 reputation agent that quantifies how macro shocks (FOMC, CPI, IPO) propagate through Mantle's CeDeFi layer — SPCXx on Merchant Moe DLMM and Aave V3 stablecoin positioning, with verifiable on-chain evidence, not invented numbers.*
 
----
 
 ## Problem Statement
 
@@ -23,7 +22,6 @@ Researchers and traders still face a structural gap:
 
 **The harder challenge after issuance is distribution:** moving from "asset exists onchain" to "we can *measure and trust* how capital repositioned when macro fired."
 
----
 
 ## Solution
 
@@ -56,7 +54,6 @@ Parallax isn't just a dashboard; it's a self-sustaining ecosystem powered by Man
 - **Mathematical Integrity**: Advanced statistical evaluations, including cross-layer Pearson r correlation matrices, strictly resolve to `n/a` when mathematically undefined (such as instances of zero variance or insufficient data pairs), refusing to bend mathematical reality for narrative convenience.
 - **Auditable Data Lineage**: Every generated dossier embeds an immutable data-quality footprint tracking specific indexing profiles (`xstocks_source`, `aave_source`). This gives institutional users and verifiers absolute visibility into whether data was derived from historical RPC snapshots or live market states.
 
----
 
 ## Tech Stack
 
@@ -92,7 +89,6 @@ Parallax isn't just a dashboard; it's a self-sustaining ecosystem powered by Man
 
 **Mantle AI Agent Skills:** The correlation pipeline is not a wrapper around a single API. `backend/src/mcp/mantle-client.ts` embeds mantle-core tools directly into acquisition, preflight, and baseline extraction. The same skill surface Mantle documents for research agents.
 
----
 
 ## How It Works
 
@@ -135,16 +131,13 @@ Mantle is positioning as the **distribution layer for RWAs** — SPCXx brings Sp
 | Off-chain reputation    | On-chain `readAllFeedback` + IPFS consensus notes on Mantle Sepolia |
 
 
----
 
 ## Demo
 
----
 
 ## Future Roadmap
 
 - **Production x402 QuestFlow Integration**: The underlying payment-gating architecture for the research agent is `fully implemented`. Currently pending approval for the submitted `QuestFlow Facilitator API key`, at which point the system will seamlessly transition from the current developer bypass into a fully live production monetization gateway.
 - **Mobile Viewport Optimization**: Transition the current desktop-first, high-density quantitative HUD console into a fully responsive, mobile-optimized interface for on-the-go macro-to-onchain alpha validation.
 
----
 
